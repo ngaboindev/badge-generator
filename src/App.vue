@@ -14,18 +14,18 @@
       <b-field label="Icon Name" message="Get this from simpleicons.org">
         <b-input v-model="icon"></b-input>
       </b-field>
-      <b-field label="Badge Color" message="Get this from simpleicons.org, too">
+      <b-field label="Badge Color" message="Hex string. Get this from simpleicons.org, too">
         <b-input v-model="color"></b-input>
       </b-field>
 
-      <img :src="badgeUrl" style="display: block;margin-bottom:10px" />
-
-      <b-button type="is-primary">Generate</b-button>
+      <b-button type="is-primary" @click="generate">Generate</b-button>
     </div>
   </div>
 </template>
 
 <script>
+import Modal from "./components/Modal";
+
 export default {
   name: "App",
   data() {
@@ -43,10 +43,20 @@ export default {
       }&message=${encodeURIComponent(
         this.name || "React"
       )}&color=${encodeURIComponent(
-        this.color || "blue"
+        this.color.replace(/\#/g, "") || "blue"
       )}&logo=${encodeURIComponent(
-        this.icon || "react"
+        this.icon.toLowerCase().replace(/ /g, "-") || "react"
       )}&logoColor=white&style=for-the-badge`;
+    }
+  },
+  methods: {
+    generate() {
+      this.$buefy.modal.open({
+        component: Modal,
+        props: {
+          badgeUrl: this.badgeUrl
+        }
+      });
     }
   }
 };
@@ -57,15 +67,12 @@ html,
 body {
   height: 100%;
 }
-#app {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-.struct-form {
+
+ .struct-form {
   padding: 30px;
-  width: 350px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-}
+  max-width: 500px;
+  width: 80%;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
+  margin: 10px auto;
+} 
 </style>

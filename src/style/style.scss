@@ -1,6 +1,8 @@
 // Set your colors
 $primary: #00afff;
 
+$body-overflow-y: auto;
+
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
