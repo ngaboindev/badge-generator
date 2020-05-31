@@ -8,7 +8,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - use: actions/checkout@v2
-      - use: actions/setup-node@v2-beta
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
       - run: export BUILD_PATH = mktemp -d
       - run: echo ${BUILD_PATH}
