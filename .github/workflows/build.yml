@@ -11,4 +11,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2-beta
       - run: export BUILD_PATH="$(mktemp -d)"
-      - run: echo ${BUILD_PATH}
+      - run: yarn run build
+      - run: cp dist/* $BUILD_PATH -r
+      - run: ls $BUILD_PATH
