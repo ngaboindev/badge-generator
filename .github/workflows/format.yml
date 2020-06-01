@@ -10,4 +10,3 @@ jobs:
       - run: yarn install
       - run: yarn checkformat
         name: Check Formatting
-
