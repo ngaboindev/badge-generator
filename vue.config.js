@@ -1,11 +1,9 @@
 module.exports = {
-    pages: {
-        index: {
-            entry: "src/main.js",
-            title: "Badge Generator"
-        }
+  pages: {
+    index: {
+      entry: "src/main.js",
+      title: "Badge Generator",
     },
-    publicPath: process.env.NODE_ENV === 'production'
-        ? '/badge-generator/'
-        : '/'
-}
+  },
+  publicPath: process.env.NODE_ENV === "production" ? "/badge-generator/" : "/",
+};
