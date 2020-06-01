@@ -28,5 +28,4 @@ jobs:
           rm -rf ${BUILD_PATH}
       - run: |
           git add *
-          git commit -am "Deploy"
-          git push --force
+          git diff-index --quiet HEAD || git commit -am "Deploy" && git push --force
