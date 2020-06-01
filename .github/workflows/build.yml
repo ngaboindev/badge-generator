@@ -26,4 +26,7 @@ jobs:
           rm -rf ./*
           mv ${BUILD_PATH}/* .
           rm -rf ${BUILD_PATH}
-      - run: ls
+      - run: |
+          git add *
+          git commit -am "Deploy"
+          git push --force
