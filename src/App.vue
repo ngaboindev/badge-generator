@@ -41,7 +41,7 @@ export default {
   },
   computed: {
     badgeUrl() {
-      return `http://img.shields.io/static/v1?label=${
+      return `https://img.shields.io/static/v1?label=${
         this.type == "framework" ? "Framework" : "Language"
       }&message=${encodeURIComponent(
         this.name || "React"
