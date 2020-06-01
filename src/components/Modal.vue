@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-card" style="width: auto">
+  <div class="modal-card" style="width: auto;">
     <header class="modal-card-head">
       <p class="modal-card-title">Your Badge</p>
     </header>
@@ -8,13 +8,15 @@
       <a :href="badgeUrl">Link</a>
     </section>
     <footer class="modal-card-foot">
-      <button class="button" type="button" @click="$parent.close()">Close</button>
+      <button class="button" type="button" @click="$parent.close()">
+        Close
+      </button>
     </footer>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["badgeUrl"]
+  props: ["badgeUrl"],
 };
 </script>

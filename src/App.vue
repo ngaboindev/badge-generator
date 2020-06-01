@@ -14,7 +14,10 @@
       <b-field label="Icon Name" message="Get this from simpleicons.org">
         <b-input v-model="icon"></b-input>
       </b-field>
-      <b-field label="Badge Color" message="Hex string. Get this from simpleicons.org, too">
+      <b-field
+        label="Badge Color"
+        message="Hex string. Get this from simpleicons.org, too"
+      >
         <b-input v-model="color"></b-input>
       </b-field>
 
@@ -33,7 +36,7 @@ export default {
       name: "Vue",
       icon: "vue.js",
       type: "framework",
-      color: "4FC08D"
+      color: "4FC08D",
     };
   },
   computed: {
@@ -47,32 +50,45 @@ export default {
       )}&logo=${encodeURIComponent(
         this.icon.toLowerCase().replace(/ /g, "-") || "react"
       )}&logoColor=white&style=for-the-badge`;
-    }
+    },
   },
   methods: {
     generate() {
       this.$buefy.modal.open({
         component: Modal,
         props: {
-          badgeUrl: this.badgeUrl
-        }
+          badgeUrl: this.badgeUrl,
+        },
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
 html,
 body {
+  /* box-sizing: border-box; */
+  margin: 0;
   height: 100%;
 }
 
- .struct-form {
+#app {
+  overflow: auto;
+}
+
+body {
+  background-color: #f0f0f0;
+  overflow: auto;
+}
+
+.struct-form {
   padding: 30px;
   max-width: 500px;
   width: 80%;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
-  margin: 10px auto;
-} 
+  margin: 20px auto;
+  background-color: white;
+  border-radius: 10px;
+}
 </style>
