@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2-beta
-      - run: echo '::set-env name=BUILD_PATH::$(mktemp -d)'
+      - run: echo "::set-env name=BUILD_PATH::$(mktemp -d)"
       - run: yarn install
       - run: yarn run build
       - run: cp dist/* $BUILD_PATH -r
