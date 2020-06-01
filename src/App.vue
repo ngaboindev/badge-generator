@@ -51,6 +51,15 @@ export default {
         this.icon.toLowerCase().replace(/ /g, "-") || "react"
       )}&logoColor=white&style=for-the-badge`;
     },
+    simpleBadgeUrl() {
+      return `https://img.shields.io/static/v1?label=&message=${encodeURIComponent(
+        this.name || "React"
+      )}&color=${encodeURIComponent(
+        this.color.replace(/\#/g, "") || "blue"
+      )}&logo=${encodeURIComponent(
+        this.icon.toLowerCase().replace(/ /g, "-") || "react"
+      )}&logoColor=white&style=for-the-badge`;
+    },
   },
   methods: {
     generate() {
@@ -58,6 +67,8 @@ export default {
         component: Modal,
         props: {
           badgeUrl: this.badgeUrl,
+          simpleBadgeUrl: this.simpleBadgeUrl,
+          name: this.name,
         },
       });
     },
