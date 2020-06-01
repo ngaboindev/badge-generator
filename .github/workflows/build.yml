@@ -10,8 +10,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2-beta
+      - run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git remote set-url origin https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}
       - run: echo "::set-env name=BUILD_PATH::$(mktemp -d)"
-      - run: yarn install
-      - run: yarn run build
+        name: Generate build directory
+      - run: |
+          yarn install
+          yarn run build
       - run: cp dist/* $BUILD_PATH -r
-      - run: ls $BUILD_PATH
+      - run: git checkout -b gh-pages origin/gh-pages
+      - run: |
+          rm -rf ./*
+          mv ${BUILD_PATH}/* .
+          rm -rf ${BUILD_PATH}
+      - run: ls
